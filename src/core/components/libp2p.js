@@ -32,7 +32,12 @@ module.exports = function libp2p (self) {
               active: get(self._options, 'EXPERIMENTAL.relay.hop.active',
                 get(config, 'EXPERIMENTAL.relay.hop.active', false))
             }
-          }
+          },
+          connectionManager: get(
+            self._options,
+            'EXPERIMENTAL.connectionManager',
+            get(config, 'EXPERIMENTAL.connectionManager')
+          )
         }
 
         self._libp2pNode = new Node(self._peerInfo, self._peerInfoBook, options)
